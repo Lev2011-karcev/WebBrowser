@@ -32,11 +32,11 @@ public :
 private :
 	class HttpsSession : public std::enable_shared_from_this<HttpsSession> {
 	public :
-		HttpsSession(ssl::stream<tcp::socket> socket, const std::string& web_root) {
-			: socket_(std::move(socket)),  // Перемещаем сокет в класс
-				web_root_(web_root) {}
+        HttpsSession(ssl::stream<tcp::socket> socket, const std::string& web_root):
+            socket_(std::move(socket)),  // Перемещаем сокет в класс
+            web_root_(web_root) {}
 			void start();
-	private :
+    private :
 		void handshake();
 		void read_request();
 		void process_request();
@@ -61,8 +61,8 @@ private :
 
 	boost::asio::io_context io_context_;
 	ssl::context ssl_context_;
-	ssl::aceptor acceptor_;
-	std::_Throw_bad_weak_ptr server_thread_;
+    boost::asio::ip::tcp::acceptor acceptor_;
+    std::thread server_thread_;
 
 
 	Logger logger_;

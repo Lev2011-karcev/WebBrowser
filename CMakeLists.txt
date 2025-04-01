@@ -18,7 +18,6 @@ set(PROJECT_SOURCES
         gui/src/Browser/mainwindow.h
         gui/src/Browser/mainwindow.ui
 )
-
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Browser
         MANUAL_FINALIZATION
