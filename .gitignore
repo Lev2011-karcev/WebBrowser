@@ -16,6 +16,7 @@
 *_resource.rc
 *.qm
 .#*
+*.gitignore
 *.*#
 core
 !core/
