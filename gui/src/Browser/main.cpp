@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include <QtWidgets>
-
+#include <QWidgetSet>
 int main(int argc, char *argv[])
 {
 
