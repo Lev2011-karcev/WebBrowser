@@ -1,4 +1,4 @@
-#include <WebServer.h>
+#include "../include/WebServer.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -63,7 +63,7 @@ void HttpsWebServer::start() {
         log("Server thread stopped");
     });
 
-    log("Server started on https://localhost: " + std::to_string(port_);
+    log("Server started on https://localhost: " + std::to_string(port_));
 }
 
 void HttpsWebServer::start_accept() {
@@ -149,7 +149,7 @@ void HttpsWebServer::HttpsSession::process_request() {
     std::string full_path = web_root_ + path;
 
     if (full_path.find("../") != std::string::npos) {
-        send_response("HTTP/1.1 403 Forbidden\r\n\r\n");
+        send_responce("HTTP/1.1 403 Forbidden\r\n\r\n");
         return;
     }
 
@@ -161,14 +161,14 @@ void HttpsWebServer::HttpsSession::process_request() {
                 "HTTP/1.1 200 OK\r\n"
                 "Content-Length: " + std::to_string(content.size()) + "\r\n"
                 "\r\n" + content;
-            send_response(response);
+            send_responce(response);
         }
         else {
-            send_response("HTTP/1.1 404 Not Found\r\n\r\n");
+            send_responce("HTTP/1.1 404 Not Found\r\n\r\n");
         }
 }
 
-void HttpsWebServer::HttpsSession::send_response(const std::string& response) {
+void HttpsWebServer::HttpsSession::send_responce(const std::string& response) {
     auto self(shared_from_this());
 
     async_write(

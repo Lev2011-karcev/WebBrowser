@@ -1,3 +1,4 @@
+#pragma once
 #include <boost/asio.hpp>
 #include <boost/asio/ssl.hpp>
 #include <string>
@@ -46,12 +47,13 @@ private :
 		boost::asio::streambuf buffer_;
 		std::string web_root_;
 	};
+private:
 
 	void start_accept();
 	void handle_accept(ssl::stream<tcp::socket> socket, const error_code& ec);
 	void setup_ssl_context();
-	void log(const std::string& message);
 
+    void log(const std::string& message) const;
 	unsigned short port_;
 	std::string web_root_;
 	std::string cert_file_;
