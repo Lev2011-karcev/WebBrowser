@@ -19,10 +19,11 @@ public:
     ~MainWindow();
 
 private slots:
-    void handleButtonClick();
-    void updateLog(const QString& message);
+    void onRequestButtonClicked(); 
+    void updateServerLog(const QString& message);
 private:
     HttpsWebServer* server_;
+    QNetworkAccessManager* httpClient_;  
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
