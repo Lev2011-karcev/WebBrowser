@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "WebServer.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -14,10 +15,14 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(HttpsWebServer* server, QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void handleButtonClick();
+    void updateLog(const QString& message);
 private:
+    HttpsWebServer* server_;
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
