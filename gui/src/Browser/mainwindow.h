@@ -2,8 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "WebServer.h"
-
+#include "../../../server/include/WebServer.h"
+#include <QtNetwork/QNetworkAccessManager>
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;

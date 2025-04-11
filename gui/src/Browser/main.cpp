@@ -1,10 +1,10 @@
 #include "mainwindow.h"
-#include "WebServer.h"
-#include <QtWidgets>
+#include "../../../server/include/WebServer.h"
+#include <QWidget>
 #include <QWidgetSet>
 int main(int argc, char *argv[])
 {
-    HttpsServer server(
+    HttpsWebServer server(
         8080,
         "./html",
         "./certs/server.crt",
